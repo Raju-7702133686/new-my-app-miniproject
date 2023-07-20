@@ -1,0 +1,27 @@
+.parent{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+
+}
+.left{
+    height: 100%;
+    width: 20%;
+    background-color:purple;
+    text-align: center;
+    overflow: auto;
+    color: white;
+
+
+}
+.right{
+    height: 100%;
+    width: 80%;
+    background-color: navajowhite;
+    padding: 10px;
+    overflow: auto;
+}
+h1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+}
