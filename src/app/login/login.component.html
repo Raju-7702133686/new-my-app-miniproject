@@ -1,26 +1,29 @@
 <div class="parent">
-    <!-- <img src="../assets/image5.jpg" alt="" height="100%" width="100%"> -->
-    <div class="child">
-        <h1>Login to Account</h1><br><br>
+   
+    <div class="left">
+        <img src="../assets/image9.png" alt="" height="100%" width="100%">
+        <div class="child">
+            <h1>Login to Account</h1><br><br>
 
-        <div>
-            <br><br>
-
-            <form [formGroup]="loginForm">
-                <label>Email</label>
-                <input type="email" fromControlName="email">
-                <br>
-
-                <label>Password</label>
-                <input type="password" fromControlName="password">
-                <br>
-
-                <a href="">forget Password?</a>
+            <div>
                 <br><br>
 
-                <button class="btn btn-primary" (click)="submit()">LOGIN</button>
-            </form>
-        </div>
+                <form [formGroup]="loginForm">
+                    <label>Email</label>
+                    <input type="email" placeholder="enter your email" autofocus fromControlName="email">
+                    <br>
 
+                    <label>Password</label>
+                    <input type="password" placeholder="enter password" fromControlName="password">
+                    <br>
+
+                    <a href="">forget Password?</a>
+                    <br><br>
+
+                    <button class="btn btn-primary" (click)="submit()" routerLink="/dashboard">LOGIN</button>
+                </form>
+            </div>
+
+        </div>
     </div>
 </div>

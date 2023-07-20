@@ -22,7 +22,6 @@ export class LoginComponent {
 
     this.loginService.dologin(this.loginForm.value).subscribe(
       (data:any)=>{
-
         this.router.navigateByUrl("/dashboard");
         localStorage.setItem('token',data.token);
       },
