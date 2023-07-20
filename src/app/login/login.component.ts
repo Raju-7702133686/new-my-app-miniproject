@@ -15,20 +15,20 @@ export class LoginComponent {
     password: new FormControl()
   })
   
-  constructor(private loginService: LoginService,private router: Router){}
+  // constructor(private loginService: LoginService,private router: Router){}
 
-  submit(){
-    console.log(this.loginForm);
+  // submit(){
+  //   console.log(this.loginForm);
 
-    this.loginService.dologin(this.loginForm.value).subscribe(
-      (data:any)=>{
-        this.router.navigateByUrl("/dashboard");
-        localStorage.setItem('token',data.token);
-      },
-      (error:any)=>{
-        alert("login failed")
-      }
-    )
-  }
+  //   this.loginService.dologin(this.loginForm.value).subscribe(
+  //     (data:any)=>{
+  //       this.router.navigateByUrl("/dashboard");
+  //       localStorage.setItem('token',data.token);
+  //     },
+  //     (error:any)=>{
+  //       alert("login failed")
+  //     }
+    
+  
 
 }

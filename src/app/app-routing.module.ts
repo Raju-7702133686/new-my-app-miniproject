@@ -4,11 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { authenticatinGuard } from './authenticatin.guard';
+import { CreateStudentComponent } from './create-student/create-student.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'dashboard',component:DashboardComponent, canActivate: [authenticatinGuard], children:[
-    {path:'home',component:HomeComponent}
+    {path:'home',component:HomeComponent},
+    {path:'create-student',component:CreateStudentComponent}
   ]}
 ];
 
