@@ -1,1 +1,85 @@
-<p>create-student works!</p>
+<h1>Create Student Data</h1>
+<br>
+<form [formGroup]="studentForm">
+    <label>Name</label>
+    <input type="text" formControlName="name">
+    <br>
+
+    <label>class</label>
+    <input type="number" formControlName="class">
+    <br>
+
+    <label>fathername</label>
+    <input type="text" formControlName="fatherName">
+    <br>
+
+    <label>email</label>
+    <input type="email" formControlName="email">
+    <br>
+
+    <label>dob</label>
+    <input type="date" formControlName="dob">
+    <br>
+
+    <div>
+        <label>addressLine</label>
+        <input type="text" formControlName="addressLine">
+        <br>
+
+        <label>city</label>
+        <input type="text" formControlName="city">
+        <br>
+
+        <label>state</label>
+        <input type="text" formControlName="state">
+        <br>
+
+        <label>pincode</label>
+        <input type="text" formControlName="pincode">
+        <br>
+
+        <button (click)="showmarks()" class="btn btn-secondary">showMarks</button>
+    </div>
+
+    <div formArrayName="marks">
+        <div *ngFor="let mark of marksFormArray.controls; let i=index">
+            <div formArrayName="{{i}}">
+
+                <label>class</label>
+                <input type="number" formControlName="class">
+                <br>
+
+                <label>year</label>
+                <input type="date" formControlName="year">
+                <br>
+
+                <label>percentage</label>
+                <input type="number" formControlName="percentage">
+                <br>
+
+            </div>
+        </div>
+    </div>
+
+    <label>type</label>
+    <input type="radio" name="type" formControlName="type" value="dayScholor">
+    <label>dayScholor</label>
+    <input type="radio" name="type" formControlName="type" value="residential">
+    <label>residential</label>
+
+
+    <div *ngIf="studentForm.get('type')?.value=='dayScholor'">
+        <label>bussfee</label>
+        <input type="number" formControlName="busfee">
+        <br>
+    </div>
+
+    
+    <div *ngIf="studentForm.get('type')?.value=='residential'">
+        <label>hostelfee</label>
+        <input type="number" formControlName="hostelfee">
+        <br>
+    </div><br>
+
+    <button (click)="submit()" class="btn btn-primary">Submit</button>
+</form>
