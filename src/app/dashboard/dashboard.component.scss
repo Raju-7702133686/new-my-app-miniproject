@@ -11,8 +11,6 @@
     text-align: center;
     overflow: auto;
     color: white;
-
-
 }
 .right{
     height: 100%;
@@ -24,4 +22,8 @@
 h1{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: white;
+}
+h2:hover{
+    background-color: rgb(151, 76, 76);
+    cursor: pointer;
 }

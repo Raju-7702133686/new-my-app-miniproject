@@ -1,28 +1,24 @@
 <div class="parent">
-    <img src="/assets/school.jpg" alt="">
+    <!-- <img src="../assets/image5.jpg" alt="" height="100%" width="100%"> -->
     <div class="child">
         <h1>Login to Account</h1><br><br>
 
         <div>
             <br><br>
 
-            <form>
+            <form [formGroup]="loginForm">
                 <label>Email</label>
-                <input type="email" class="bacon">
+                <input type="email" fromControlName="email">
                 <br>
 
                 <label>Password</label>
-                <input type="password" class="bacon">
+                <input type="password" fromControlName="password">
                 <br>
-
-                <!-- <input type="checkbox">
-                <label for="">Remeber me</label>
-                <br> -->
 
                 <a href="">forget Password?</a>
                 <br><br>
 
-                <button class="btn btn-primary" routerLink="/dashboard">LOGIN</button>
+                <button class="btn btn-primary" (click)="submit()">LOGIN</button>
             </form>
         </div>
 
