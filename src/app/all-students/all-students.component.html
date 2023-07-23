@@ -1,24 +1,101 @@
-<table class="table table-dark">
+<h1>All Students Data Details</h1>
+<br>
+
+<div class="input-group mb-3" id="navbar">
+    <input type="text" class="form-control" [(ngModel)]="term" (keyup)="getfilterstudent()" placeholder="search">
+    <button class="btn btn-success" type="submit">Go</button><br><br>
+
+
+
+    <label>Column</label>
+    <select [(ngModel)]="column" class="hello">
+        <option>name</option>
+        <option>class</option>
+    </select>
+
+    <label>order</label>
+    <select [(ngModel)]="order" class="hello">
+        <option>asc</option>
+        <option>desc</option>
+    </select>
+
+    <button (click)="getsortedstudents()" class="btn btn-success" type="submit">Sort</button>
+
+
+
+    <label>limit</label>
+    <select [(ngModel)]="limit" class="hello">
+        <option>2</option>
+        <option>5</option>
+    </select>
+
+    <label>page</label>
+    <select [(ngModel)]="page" class="hello">
+        <option>1</option>
+        <option>2</option>
+    </select>
+
+    <button (click)="getpaginationstudents()" class="btn btn-success" type="submit">pagination</button>
+
+</div><br>
+
+
+
+<table class="table table-light">
     <thead>
         <tr>
             <th>Name</th>
+            <th>class</th>
+            <th>fatherName</th>
             <th>Email</th>
-            <th>Password</th>
+            <th>dob</th>
+            <th>addressLine</th>
+            <th> city</th>
+            <th>state</th>
+            <th>pincode</th>
+            <th>marks</th>
+            <th>class</th>
+            <th>year</th>
+            <th>percentage</th>
+            <th>busfee</th>
+            <th>hostelfee</th>
             <th>Id</th>
             <th>Avater</th>
-            <th>Created at</th>
+            <th>Created at</th>            
+            <th>Actions</th>
         </tr>
     </thead>
+
     <tbody>
+        <tr></tr>
         <tr *ngFor="let student of students">
             <td>{{ student.name }}</td>
+            <td>{{ student.class }}</td>
+            <td>{{ student.fatherName }}</td>
             <td>{{ student.email }}</td>
-            <td>{{ student.password }}</td>
+            <td>{{ student.dob }}</td>
+            <td>{{ student.address?.addressLine }}</td>
+            <td>{{ student.address?.city }}</td>
+            <td>{{ student.address?.state }}</td>
+            <td>{{ student.address?.pincode }}</td>
+            <td>{{ student.marks }}</td>
+            <td>{{ student.marks?.class }}</td>
+            <td>{{ student.marks?.year }}</td>
+            <td>{{ student.marks?.percentage }}</td>
+            <td>{{ student.busfee }}</td>
+            <td>{{ student.hostelfee }}</td>
             <td>{{ student.id }}</td>
             <td>
-                <img src="{{ student.avatar }}" alt="">
+                <img src="{{ student.avatar }}" alt="" height="200px" width="200px">
             </td>
-            <td>{{ student.createdAt }}</td>
+            <td>{{ student.createdAt }}</td>        
+            <td>
+                <button class="btn btn-warning">View</button>
+                <button class="btn btn-info">Edit</button>
+                <button class="btn btn-danger" (click)="deletestudents(student.id)">Delete</button>
+
+            </td>
+
 
 
         </tr>

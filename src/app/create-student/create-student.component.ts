@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AllStudentsService } from '../students.service';
 
 @Component({
@@ -10,11 +10,12 @@ import { AllStudentsService } from '../students.service';
 export class CreateStudentComponent {
 
   public studentForm: FormGroup = new FormGroup({
-    name: new FormControl(),
-    class: new FormControl(),
-    fatherName: new FormControl(),
-    email: new FormControl(),
-    dob: new FormControl(),
+    name: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
+    class: new FormControl('',[Validators.required,Validators.min(100),Validators.max(4444)]),
+    fatherName: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
+    email: new FormControl('',[Validators.required,Validators.email]),
+    dob: new FormControl('',[Validators.required,]),
+    avatar: new FormControl(),
     address: new FormGroup({
       addressLine: new FormControl(),
       city: new FormControl(),
@@ -33,7 +34,7 @@ export class CreateStudentComponent {
 
   }
 
-  showmarks(){
+  showmarks() {
     this.marksFormArray.push(
       new FormGroup({
         class: new FormControl(),
@@ -43,19 +44,21 @@ export class CreateStudentComponent {
     )
   }
 
-  constructor(private studentService: AllStudentsService){}
+  constructor(private studentService: AllStudentsService) { }
 
-  submit(){
+  submit() {
     console.log(this.studentForm);
 
     this.studentService.creatstudent(this.studentForm.value).subscribe(
-      (data:any)=>{
+      (data: any) => {
         alert("student data created successfully");
       },
-      (error:any)=>{
+      (error: any) => {
         alert("student data creation failed");
       }
     )
-  }
 
+
+  
+  }
 }

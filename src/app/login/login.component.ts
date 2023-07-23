@@ -10,25 +10,27 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  public loginForm: FormGroup = new FormGroup({
-    email: new FormControl(),
-    password: new FormControl()
-  })
-  
-  // constructor(private loginService: LoginService,private router: Router){}
+public loginForm: FormGroup= new FormGroup({
+  email: new FormControl(),
+  password: new FormControl()
+})
 
-  // submit(){
-  //   console.log(this.loginForm);
+constructor(private loginService: LoginService ,private router: Router){}
 
-  //   this.loginService.dologin(this.loginForm.value).subscribe(
-  //     (data:any)=>{
-  //       this.router.navigateByUrl("/dashboard");
-  //       localStorage.setItem('token',data.token);
-  //     },
-  //     (error:any)=>{
-  //       alert("login failed")
-  //     }
-    
-  
+submit(){
+  console.log(this.loginForm);
 
+
+  this.loginService.dologin(this.loginForm.value).subscribe(
+    (data:any)=>{
+
+      this.router.navigateByUrl("/dashboard");
+      localStorage.setItem('token',data.token);
+    },
+    (error:any)=>{
+      alert("login failed");
+    }
+  )
 }
+}
+

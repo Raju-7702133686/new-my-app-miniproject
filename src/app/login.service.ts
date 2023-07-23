@@ -8,9 +8,9 @@ import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 })
 export class LoginService {
 
-  constructor(private httpService: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  dologin(data:any): Observable<any>{
-    return this.httpService.post("https://reqres.in/api/login",data);
+  dologin(data: any): Observable<any> {
+    return this.httpClient.post("https://reqres.in/api/login", data);
   }
 }

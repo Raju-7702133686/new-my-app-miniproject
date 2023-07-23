@@ -8,12 +8,12 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent {
 
-  constructor(private router: Router){}
+constructor(private router: Router){}
 
-  logout(){
-    localStorage.removeItem('token');
-    this.router.navigateByUrl("/login");
-  }
+logout(){
+  localStorage.removeItem('token');
+  this.router.navigateByUrl("/login");
+}
 
 
 }
