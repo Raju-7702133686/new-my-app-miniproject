@@ -18,3 +18,16 @@ button{
 h1{
     color: skyblue;
 }
+parent{
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+child1{
+    height: 50%;
+    width: 50%;
+    background-color: blueviolet;
+}

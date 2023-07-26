@@ -33,7 +33,11 @@ export class AllStudentsService {
     return this.httpClient.delete("https://64b8a34b21b9aa6eb07a012b.mockapi.io/api/students-mini/students/"+id);
   }
 
+  getstudent(id:any):Observable<any>{
+    return this.httpClient.get("https://64b8a34b21b9aa6eb07a012b.mockapi.io/api/students-mini/students/"+id);
+  }
 
-
-  
+  updatestudent(id:any,data:any):Observable<any>{
+    return this.httpClient.put("https://64b8a34b21b9aa6eb07a012b.mockapi.io/api/students-mini/students/"+id,data);
+  }
 }

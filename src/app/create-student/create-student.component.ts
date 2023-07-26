@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AllStudentsService } from '../students.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-student',
@@ -10,22 +11,22 @@ import { AllStudentsService } from '../students.service';
 export class CreateStudentComponent {
 
   public studentForm: FormGroup = new FormGroup({
-    name: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
-    class: new FormControl('',[Validators.required,Validators.min(100),Validators.max(4444)]),
-    fatherName: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
-    email: new FormControl('',[Validators.required,Validators.email]),
-    dob: new FormControl('',[Validators.required,]),
+    name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+    class: new FormControl('', [Validators.required, Validators.min(100), Validators.max(4444)]),
+    fatherName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    dob: new FormControl(),
     avatar: new FormControl(),
     address: new FormGroup({
       addressLine: new FormControl(),
-      city: new FormControl(),
-      state: new FormControl(),
-      pincode: new FormControl()
+      city: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
+      state: new FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(10)]),
+      pincode: new FormControl('',[Validators.required,Validators.min(100000),Validators.max(666666)])
     }),
     marks: new FormArray([]),
     type: new FormControl(),
-    busfee: new FormControl(),
-    hostelfee: new FormControl()
+    busfee: new FormControl('',[Validators.required,]),
+    hostelfee: new FormControl('',[Validators.required])
 
   });
 
@@ -37,28 +38,62 @@ export class CreateStudentComponent {
   showmarks() {
     this.marksFormArray.push(
       new FormGroup({
-        class: new FormControl(),
-        year: new FormControl(),
-        percentage: new FormControl()
+        class: new FormControl('',[Validators.required]),
+        year: new FormControl('',[Validators.required]),
+        percentage: new FormControl('',[Validators.required])
       })
     )
   }
 
-  constructor(private studentService: AllStudentsService) { }
+  public id: any = "";
+
+  constructor(private studentService: AllStudentsService, private activatedroute: ActivatedRoute, private router: Router) {
+
+    this.activatedroute.params.subscribe(
+      (data: any) => {
+        this.id = data.id;
+
+        this.studentService.getstudent(this.id).subscribe(
+          (data:any)=>{
+            this.studentForm.patchValue(data);
+          }
+        )
+        
+      }
+    )
+
+  }
+  deleteclass(i:any){
+    this.marksFormArray.removeAt(i);
+  }
 
   submit() {
     console.log(this.studentForm);
 
-    this.studentService.creatstudent(this.studentForm.value).subscribe(
-      (data: any) => {
-        alert("student data created successfully");
-      },
-      (error: any) => {
-        alert("student data creation failed");
-      }
-    )
+    if (this.id?.length > 0) {
+      this.studentService.updatestudent(this.id, this.studentForm.value).subscribe(
+        (data: any) => {
+          alert("student details updated successfully");
+          this.router.navigateByUrl("/dashboard/all-students");
+        },
+        (error: any) => {
+          alert("student details updation failed");
+        }
+      )
+
+    }
+    else {
+      this.studentService.creatstudent(this.studentForm.value).subscribe(
+        (data: any) => {
+          alert("student details created successfully");
+        },
+        (error: any) => {
+          alert("student details creation failed");
+        }
+      )
+    }
 
 
-  
+
   }
 }

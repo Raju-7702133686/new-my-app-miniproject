@@ -1,9 +1,11 @@
-<h1>All Students Data Details</h1>
+<h1>All Students Details</h1>
 <br>
 
-<div class="input-group mb-3" id="navbar">
-    <input type="text" class="form-control" [(ngModel)]="term" (keyup)="getfilterstudent()" placeholder="search">
-    <button class="btn btn-success" type="submit">Go</button><br><br>
+<div>
+
+
+    <input type="text" class="form-control" [(ngModel)]="term" (keyup)="getfilterstudent()" placeholder="search"><br>
+    <!-- <button class="btn btn-success" type="submit">Go</button><br><br> -->
 
 
 
@@ -53,7 +55,6 @@
             <th> city</th>
             <th>state</th>
             <th>pincode</th>
-            <th>marks</th>
             <th>class</th>
             <th>year</th>
             <th>percentage</th>
@@ -61,7 +62,7 @@
             <th>hostelfee</th>
             <th>Id</th>
             <th>Avater</th>
-            <th>Created at</th>            
+            <th>Created at</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -73,25 +74,24 @@
             <td>{{ student.class }}</td>
             <td>{{ student.fatherName }}</td>
             <td>{{ student.email }}</td>
-            <td>{{ student.dob }}</td>
+            <td>{{ student.dob | date:'dd/MM/yyyy'}}</td>
             <td>{{ student.address?.addressLine }}</td>
             <td>{{ student.address?.city }}</td>
             <td>{{ student.address?.state }}</td>
             <td>{{ student.address?.pincode }}</td>
-            <td>{{ student.marks }}</td>
-            <td>{{ student.marks?.class }}</td>
-            <td>{{ student.marks?.year }}</td>
-            <td>{{ student.marks?.percentage }}</td>
-            <td>{{ student.busfee }}</td>
-            <td>{{ student.hostelfee }}</td>
+            <td>{{ student.class }}</td>
+            <td>{{ student.year }}</td>
+            <td [ngStyle]="{'background-color': student.percentage>=35? 'green':'red'}">{{ student.percentage }}</td>
+            <td>{{ student.busfee | price }}</td>
+            <td>{{ student.hostelfee | price }}</td>
             <td>{{ student.id }}</td>
             <td>
                 <img src="{{ student.avatar }}" alt="" height="200px" width="200px">
             </td>
-            <td>{{ student.createdAt }}</td>        
+            <td>{{ student.createdAt }}</td>
             <td>
-                <button class="btn btn-warning">View</button>
-                <button class="btn btn-info">Edit</button>
+                <button class="btn btn-warning" (click)="view(student.id)">View</button>
+                <button class="btn btn-info" (click)="edit(student.id)">Edit</button>
                 <button class="btn btn-danger" (click)="deletestudents(student.id)">Delete</button>
 
             </td>

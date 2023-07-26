@@ -1,15 +1,23 @@
 <div class="parent">
 
     <div class="left">
-        <h1>𝓖𝓻𝓪𝓬𝔂 𝓘𝓷𝓽𝓮𝓻𝓷𝓪𝓽𝓲𝓸𝓷𝓪𝓵 𝓗𝓲𝓰𝓱 𝓢𝓬𝓱𝓸𝓸𝓵</h1>
-        <hr><hr>
+        <!-- <h1>𝓖𝓻𝓪𝓬𝔂 𝓘𝓷𝓽𝓮𝓻𝓷𝓪𝓽𝓲𝓸𝓷𝓪𝓵 𝓗𝓲𝓰𝓱 𝓢𝓬𝓱𝓸𝓸𝓵</h1> -->
+
+        <img src="../assets/logo.png" alt="" height="200px" width="200px%">
+        <hr>
+        <hr>
         <h2 routerLink="home">Home</h2>
         <h2 routerLink="create-student">Create Student</h2>
         <h2 routerLink="all-students">All Students</h2>
-        <button class="btn btn-secondary" (click)="logout()">Logout</button>
+        <h2 routerLink="product">Product</h2>
+        <h2 routerLink="parent">parent</h2>
+        <h2 routerLink="item">Item</h2>
+        <h2 routerLink="nav">Nav</h2>
+        <h2 routerLink="cart">Cart</h2>
+        <button (click)="logout()">Logout</button>
     </div>
     <div class="right">
-        
+
         <router-outlet></router-outlet>
     </div>
 

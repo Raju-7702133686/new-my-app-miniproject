@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, PatternValidator, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
 import { Router } from '@angular/router';
 
@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
 public loginForm: FormGroup= new FormGroup({
-  email: new FormControl(),
-  password: new FormControl()
+  email: new FormControl('',[Validators.required,Validators.email]),
+  password: new FormControl('',[Validators.required,Validators.pattern('^[a-zA-Z]+$')])
 })
 
 constructor(private loginService: LoginService ,private router: Router){}

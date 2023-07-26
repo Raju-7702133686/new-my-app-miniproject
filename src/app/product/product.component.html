@@ -1,0 +1,23 @@
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Name</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Saleprice</th>
+            <th>download</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products">
+            <td>{{product.name}}</td>
+            <td>{{product.model}}</td>
+            <td>{{product.price | price}}</td>
+            <td>{{product.rating}}</td>
+            <td>{{product.saleprice | price}}</td>
+            <td><i class="fa-solid fa-download"></i></td>
+
+        </tr>
+    </tbody>
+</table>

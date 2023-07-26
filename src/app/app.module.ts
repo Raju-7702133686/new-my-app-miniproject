@@ -11,6 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CreateStudentComponent } from './create-student/create-student.component';
 import { AllStudentsComponent } from './all-students/all-students.component';
+import { StudentDetailsComponent } from './student-details/student-details.component';
+import { PricePipe } from './price.pipe';
+import { ImpDirective } from './imp.directive';
+import { ProductComponent } from './product/product.component';
+import { ParentComponent } from './parent/parent.component';
+import { ChildComponent } from './child/child.component';
+import { ItemComponent } from './item/item.component';
+import { NavComponent } from './nav/nav.component';
+import { CartComponent } from './cart/cart.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +29,16 @@ import { AllStudentsComponent } from './all-students/all-students.component';
     DashboardComponent,
     HomeComponent,
     CreateStudentComponent,
-    AllStudentsComponent
+    AllStudentsComponent,
+    StudentDetailsComponent,
+    PricePipe,
+    ImpDirective,
+    ProductComponent,
+    ParentComponent,
+    ChildComponent,
+    ItemComponent,
+    NavComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

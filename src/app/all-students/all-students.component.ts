@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AllStudentsService } from '../students.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-students',
@@ -19,7 +20,7 @@ export class AllStudentsComponent {
   public page: any = "";
 
 
-  constructor(private studentsService: AllStudentsService) {
+  constructor(private studentsService: AllStudentsService,private router: Router) {
 
     this.studentsService.getstudents().subscribe(
       (data: any) => {
@@ -77,6 +78,14 @@ export class AllStudentsComponent {
         alert("internal error");
       }
     )
+  }
+
+  view(id:number){
+    this.router.navigateByUrl('/dashboard/student-details/'+id)
+
+  }
+  edit(id:any){
+    this.router.navigateByUrl('/dashboard/edit-student/'+id);
   }
 
 }

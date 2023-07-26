@@ -1,0 +1,39 @@
+[
+    {
+        "name":"car",
+        "model":"top",
+        "price":200000,
+        "rating":5,
+        "saleprice":150000
+    },
+    {
+        "name":"bike",
+        "model":"top",
+        "price":50000,
+        "rating":4,
+        "saleprice":45000
+    },
+    {
+        "name":"mobile",
+        "model":"top",
+        "price":15000,
+        "rating":3,
+        "saleprice":13000
+    },
+    {
+        "name":"bluetooth",
+        "model":"top",
+        "price":2000,
+        "rating":4,
+        "saleprice":1500
+    },
+    {
+        "name":"laptop",
+        "model":"top",
+        "price":50000,
+        "rating":4.5,
+        "saleprice":45000
+    }
+    
+    
+]
